@@ -1,0 +1,67 @@
+import tensorflow as tf
+import numpy as np
+from PIL import Image
+
+# Load trained model
+model = tf.keras.models.load_model("models/plant_disease_model.h5")
+
+# Class names (must match your dataset folder names)
+CLASS_NAMES = [
+    "Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot",
+    "Corn_(maize)___Common_rust_",
+    "Corn_(maize)___Northern_Leaf_Blight",
+    "Corn_(maize)___healthy",
+
+    "Grape___Black_rot",
+    "Grape___Esca_(Black_Measles)",
+    "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)",
+    "Grape___healthy",
+
+    "Orange___Haunglongbing_(Citrus_greening)",
+
+    "Pepper,_bell___Bacterial_spot",
+    "Pepper,_bell___healthy",
+
+    "Potato___Early_blight",
+    "Potato___Late_blight",
+    "Potato___healthy",
+
+    "Strawberry___Leaf_scorch",
+    "Strawberry___healthy",
+
+    "Tomato___Early_blight",
+    "Tomato___Late_blight",
+    "Tomato___healthy"
+]
+
+def predict_image(image_path):
+    print("Received path:", repr(image_path))
+
+    image = Image.open(image_path).convert("RGB")
+    image = Image.open(image_path).convert("RGB")
+    image = image.resize((224, 224))
+
+    img_array = np.array(image) / 255.0
+    img_array = np.expand_dims(img_array, axis=0)
+
+    prediction = model.predict(img_array, verbose=0)[0]
+
+    predicted_index = np.argmax(prediction)
+
+    confidence = float(np.max(prediction)) * 100
+
+    predicted_class = CLASS_NAMES[predicted_index]
+
+    top_indices = np.argsort(prediction)[-3:][::-1]
+
+    top_predictions = []
+
+    for idx in top_indices:
+        top_predictions.append(
+            (
+                CLASS_NAMES[idx],
+                float(prediction[idx]) * 100
+            )
+        )
+
+    return predicted_class, confidence, top_predictions
