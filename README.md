@@ -11,35 +11,6 @@ Dataset used:
 Kaggle PlantVillage Dataset
 https://www.kaggle.com/datasets/abdallahalidev/plantvillage-dataset
 
-Download the dataset and create the following folder structure:
-
-PlantHealthAdvisor/
-
-├── dataset/
-│   ├── Corn_(maize)__*Cercospora_leaf_spot Gray_leaf_spot*
-*│   ├── Corn*(maize)_**Common_rust**
-*│   ├── Corn*(maize)__*healthy*
-*│   ├── Corn*(maize)***Northern_Leaf_Blight***
-***│   ├── Grape___Black_rot***
-***│   ├── Grape___Esca*****(Black_Measles)**
-**│   ├── Grape___healthy**
-**│   ├── Grape___Leaf_blight***(Isariopsis_Leaf_Spot)*
-*│   ├── Orange___Haunglongbing*(Citrus_greening)
-│   ├── Pepper,_bell___Bacterial_spot
-│   ├── Pepper,_bell___healthy
-│   ├── Potato___Early_blight
-│   ├── Potato___healthy
-│   ├── Potato___Late_blight
-│   ├── Strawberry___healthy
-│   ├── Strawberry___Leaf_scorch
-│   ├── Tomato___Early_blight
-│   ├── Tomato___healthy
-│   └── Tomato___Late_blight
-
-These are the 19 classes used to train the model.
-
----
-
 ## 🌿 Supported Plants
 
 * Tomato
@@ -50,30 +21,111 @@ These are the 19 classes used to train the model.
 * Grape
 * Bell Pepper
 
+
+Download the dataset 
+
+
+## 📂 File Placement Structure
+
+Create a main folder named:
+
+```text id="bqjlwm"
+PlantHealthAdvisor
+```
+
+Inside `PlantHealthAdvisor`, paste these files directly:
+
+```text id="rhl8y5"
+app.py
+fertilizer_info.py
+requirements.txt
+train_model.py
+README.md
+```
+
 ---
 
-## 📂 Project Structure
+Create a folder named:
 
-PlantHealthAdvisor/
+```text id="o0ly5r"
+models
+```
 
-├── app.py
-├── fertilizer_info.py
-├── requirements.txt
-├── train_model.py
+Inside `models`, paste:
 
-├── models/
-│   └── plant_disease_model.h5
-
-├── knowledge_base/
-│   └── disease_info.py
-
-└── utils/
-├── history_logger.py
-├── leaf_validator.py
-├── predictor.py
-└── report_generator.py
+```text id="n2mlxf"
+plant_disease_model.h5
+```
 
 ---
+
+Create a folder named:
+
+```text id="8hl7g0"
+knowledge_base
+```
+
+Inside `knowledge_base`, paste:
+
+```text id="vk2b4g"
+disease_info.py
+```
+
+---
+
+Create a folder named:
+
+```text id="n8yq67"
+utils
+```
+
+Inside `utils`, paste:
+
+```text id="wmtm73"
+history_logger.py
+leaf_validator.py
+predictor.py
+report_generator.py
+```
+
+---
+
+Create another folder named:
+
+```text id="ywsibn"
+dataset
+```
+
+Inside `dataset`, paste these 19 class folders from the PlantVillage dataset:
+
+```text id="w27vmo"
+Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot
+Corn_(maize)___Common_rust_
+Corn_(maize)___healthy
+Corn_(maize)___Northern_Leaf_Blight
+
+Grape___Black_rot
+Grape___Esca_(Black_Measles)
+Grape___healthy
+Grape___Leaf_blight_(Isariopsis_Leaf_Spot)
+
+Orange___Haunglongbing_(Citrus_greening)
+
+Pepper,_bell___Bacterial_spot
+Pepper,_bell___healthy
+
+Potato___Early_blight
+Potato___healthy
+Potato___Late_blight
+
+Strawberry___healthy
+Strawberry___Leaf_scorch
+
+Tomato___Early_blight
+Tomato___healthy
+Tomato___Late_blight
+```
+
 
 ## ⚙️ Installation
 
